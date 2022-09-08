@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Language : Entity
+    public class Technology : Entity
     {
         public string Name { get; set; }
-        public virtual List<Technology> Technologies { get; set; }
+        public int LanguageId { get; set; }
+        public virtual Language Language { get; set; }
 
-        public Language()
+        public Technology()
         {
 
         }
-        public Language(int id, string name) : this()
+        public Technology(int id, string name, int LanguageId)
         {
-            this.Name = name;
             this.Id = id;
+            this.Name = name;
+            this.LanguageId = LanguageId;
         }
     }
 }

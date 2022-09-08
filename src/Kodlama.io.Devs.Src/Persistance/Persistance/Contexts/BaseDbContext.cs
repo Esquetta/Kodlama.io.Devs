@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Persistance.Contexts
 {
@@ -14,6 +15,7 @@ namespace Persistance.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
 
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
@@ -28,7 +30,22 @@ namespace Persistance.Contexts
             //        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SomeConnectionString")));
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Technology>(x =>
+            {
+                x.ToTable("Tech").HasKey("Id");
+                x.Property(x => x.Name).HasColumnName("Name");
+                x.Property(x => x.LanguageId).HasColumnName("LanguageId");
 
-        
+                x.HasOne(x => x.Language);
+            });
+
+            Technology[] technologies = { new(1, "WPF", 2), new(2, "ASP.NET", 2), new(3, "Spring", 3) };
+            modelBuilder.Entity<Technology>().HasData(technologies);
+
+        }
+
+
     }
 }
