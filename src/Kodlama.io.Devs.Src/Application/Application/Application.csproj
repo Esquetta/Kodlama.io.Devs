@@ -32,6 +32,9 @@
 
   <ItemGroup>
     <Folder Include="Features\Languages\Constant\" />
+    <Folder Include="Features\Technologies\Commands\" />
+    <Folder Include="Features\Technologies\Constants\" />
+    <Folder Include="Features\Technologies\Rules\" />
   </ItemGroup>
 
 </Project>

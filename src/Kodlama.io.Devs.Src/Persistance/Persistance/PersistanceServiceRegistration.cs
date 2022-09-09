@@ -17,6 +17,7 @@ namespace Persistance
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddScoped<ILanguageRepository,LanguageRepository>();
+            services.AddScoped<ITechnologyRepository, TechnologyRepository>();
             services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("RentACarCampConnectionString")));
 
             return services;
