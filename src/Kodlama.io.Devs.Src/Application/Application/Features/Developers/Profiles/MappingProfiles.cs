@@ -1,7 +1,9 @@
 ﻿using Application.Features.Developers.Commands.RegisterDeveloper;
 using Application.Features.Developers.Dtos;
 using AutoMapper;
+using Core.Persistence.Paging;
 using Core.Security.Dtos;
+using Core.Security.JWT;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,10 @@ namespace Application.Features.Developers.Profiles
             CreateMap<Developer, RegisteredUserDto>().ReverseMap();
             CreateMap<Developer, RegisterDeveloperCommand>().ReverseMap();
             CreateMap<Developer, UserForRegisterDto>().ReverseMap();
+
+
+            CreateMap<AccessToken, LoggedUserDto>().ReverseMap();
+
         }
     }
 }

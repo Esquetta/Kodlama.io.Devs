@@ -28,15 +28,15 @@ namespace Application.Features.Developers.Commands.RegisterDeveloper
             private readonly IDeveloperRepository developerRepository;
             private readonly IMapper mapper;
             private readonly DeveloperBussinessRules developerBussinessRules;
-            private ITokenHelper tokenHelper;
+            
             private readonly IOperationClaimRepository operationClaimRepository;
             private readonly IUserOperationClaimRepository userOperationClaimRepository;
 
-            public RegisterDeveloperCommandHandler(IDeveloperRepository developerRepository, IMapper mapper, DeveloperBussinessRules developerBussinessRules, ITokenHelper tokenHelper, IOperationClaimRepository operationClaimRepository, IUserOperationClaimRepository userOperationClaimRepository)
+            public RegisterDeveloperCommandHandler(IDeveloperRepository developerRepository, IMapper mapper, DeveloperBussinessRules developerBussinessRules,IOperationClaimRepository operationClaimRepository, IUserOperationClaimRepository userOperationClaimRepository)
             {
                 this.developerRepository = developerRepository;
                 this.mapper = mapper;
-                this.tokenHelper = tokenHelper;
+                
                 this.developerBussinessRules = developerBussinessRules;
                 this.operationClaimRepository = operationClaimRepository;
                 this.userOperationClaimRepository = userOperationClaimRepository;
