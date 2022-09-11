@@ -31,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Developers\Constants\" />
+    <Folder Include="Features\Developers\Models\" />
+    <Folder Include="Features\Developers\Queries\" />
     <Folder Include="Features\Languages\Constant\" />
     <Folder Include="Features\Technologies\Constants\" />
   </ItemGroup>

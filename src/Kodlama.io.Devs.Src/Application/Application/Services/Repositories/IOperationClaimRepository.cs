@@ -1,6 +1,5 @@
 ﻿using Core.Persistence.Repositories;
 using Core.Security.Entities;
-using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.Repositories
 {
-    public interface IDeveloperRepository:IRepository<Developer>,IAsyncRepository<Developer>
+    public interface IOperationClaimRepository:IRepository<OperationClaim>,IAsyncRepository<OperationClaim>
     {
-        List<OperationClaim> GetOperationClaims(User user);
     }
 }
