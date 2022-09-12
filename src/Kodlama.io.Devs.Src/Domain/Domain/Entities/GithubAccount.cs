@@ -13,6 +13,10 @@ namespace Domain.Entities
 
         public virtual List<Developer> Developers { get; set; }
 
+        public GithubAccount()
+        {
+
+        }
 
         public GithubAccount(int id, string AccountLink)
         {
