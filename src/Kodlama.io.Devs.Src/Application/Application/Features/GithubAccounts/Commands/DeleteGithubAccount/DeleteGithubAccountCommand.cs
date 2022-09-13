@@ -30,7 +30,7 @@ namespace Application.Features.GithubAccounts.Commands.DeleteGithubAccount
                 GithubAccount account = await githubAccountRepository.GetAsync(x => x.Id == request.Id);
 
 
-                GithubAccount githubAccount = await githubAccountRepository.DeleteAsync(account);
+                GithubAccount deletedAccount = await githubAccountRepository.DeleteAsync(account);
 
                 DeletedGithubAccountDto deletedGithubAccountDto = mapper.Map<DeletedGithubAccountDto>(deletedAccount);
 

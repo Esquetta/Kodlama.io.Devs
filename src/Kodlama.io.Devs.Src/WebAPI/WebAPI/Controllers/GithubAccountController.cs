@@ -11,6 +11,12 @@ namespace WebAPI.Controllers
     public class GithubAccountController : BaseController
     {
 
+        private readonly IHttpContextAccessor httpContextAccessor;
+        public GithubAccountController(IHttpContextAccessor httpContextAccessor)
+        {
+            this.httpContextAccessor = httpContextAccessor;
+        }
+        
         [HttpPost]
         [Authorize, AllowAnonymous]
         public async Task<IActionResult> Add([FromBody] CreateGithubAccountCommand createGithubAccountCommand)

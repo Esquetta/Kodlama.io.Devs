@@ -22,7 +22,7 @@ namespace Persistance.Repositories
         {
             var claims = from OperationClaim in Context.OperationClaims
                          join UserOperationClaim in Context.UserOperationClaims
-                         on OperationClaim.Id equals UserOperationClaim.Id
+                         on OperationClaim.Id equals UserOperationClaim.OperationClaimId
                          where UserOperationClaim.UserId == user.Id
                          select new OperationClaim { Id = OperationClaim.Id, Name = OperationClaim.Name };
 

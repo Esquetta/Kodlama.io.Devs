@@ -14,7 +14,8 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
 {
     public class DeleteTechnologyCommand : IRequest<DeletedTechnologyDto>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
+        
 
         public class DeleteTechnologyCommandHandler : IRequestHandler<DeleteTechnologyCommand, DeletedTechnologyDto>
         {
@@ -30,7 +31,7 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
 
             public async Task<DeletedTechnologyDto> Handle(DeleteTechnologyCommand request, CancellationToken cancellationToken)
             {
-                Technology technology = await technologyBussinessRules.IsTechnologyNameExist(request.Name);
+                Technology technology = await technologyBussinessRules.IsTechnologyExist(request.Id);
 
 
                 Technology deletedTechnology = await technologyRepository.DeleteAsync(technology);

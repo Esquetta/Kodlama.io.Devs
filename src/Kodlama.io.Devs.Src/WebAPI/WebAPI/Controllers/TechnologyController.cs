@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetListDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
         {
             GetListTechnologyByDynamicQuery getListTechnologyByDynamicQuery = new GetListTechnologyByDynamicQuery { PageRequest = pageRequest, Dynamic = dynamic };

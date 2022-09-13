@@ -34,5 +34,12 @@ namespace Application.Features.Technologies.Rules
             if (result == null) throw new BusinessException("Technology not found.");
             return result;
         }
+
+        public async Task<Technology> IsTechnologyExist(int Id)
+        {
+            Technology result = await technologyRepository.GetAsync(b => b.Id == Id );
+            if (result == null) throw new BusinessException("Technology not found.");
+            return result;
+        }
     }
 }
