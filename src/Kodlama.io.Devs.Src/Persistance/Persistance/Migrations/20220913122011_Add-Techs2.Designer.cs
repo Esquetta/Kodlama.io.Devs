@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance.Contexts;
 
@@ -11,9 +12,10 @@ using Persistance.Contexts;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220913122011_Add-Techs2")]
+    partial class AddTechs2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,7 +235,7 @@ namespace Persistance.Migrations
                 {
                     b.HasBaseType("Core.Security.Entities.User");
 
-                    b.Property<int?>("GithubAccountId")
+                    b.Property<int>("GithubAccountId")
                         .HasColumnType("int");
 
                     b.HasIndex("GithubAccountId");
@@ -286,7 +288,9 @@ namespace Persistance.Migrations
                 {
                     b.HasOne("Domain.Entities.GithubAccount", "GithubAccount")
                         .WithMany("Developers")
-                        .HasForeignKey("GithubAccountId");
+                        .HasForeignKey("GithubAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("GithubAccount");
                 });

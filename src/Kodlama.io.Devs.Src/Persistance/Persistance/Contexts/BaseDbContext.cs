@@ -46,7 +46,7 @@ namespace Persistance.Contexts
                 x.HasOne(x => x.Language);
             });
 
-            Technology[] technologies = { new(1, "WPF", 2), new(2, "ASP.NET", 2), new(3, "Spring", 3) };
+            Technology[] technologies = { new(1, "WPF", 1), new(2, "ASP.NET", 1), new(3, "Spring", 2) };
             modelBuilder.Entity<Technology>().HasData(technologies);
 
         }

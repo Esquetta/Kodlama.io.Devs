@@ -13,7 +13,6 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Authorize, AllowAnonymous]
-
         public async Task<IActionResult> Add([FromBody] CreateGithubAccountCommand createGithubAccountCommand)
         {
             CreatedGithibAccountDto createdGithibAccountDto = await Mediator.Send(createGithubAccountCommand);

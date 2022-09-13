@@ -12,8 +12,8 @@ using Persistance.Contexts;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220911120122_Add-User")]
-    partial class AddUser
+    [Migration("20220913121919_Add-Techs")]
+    partial class AddTechs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,10 +235,7 @@ namespace Persistance.Migrations
                 {
                     b.HasBaseType("Core.Security.Entities.User");
 
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GithubAccountId")
+                    b.Property<int>("GithubAccountId")
                         .HasColumnType("int");
 
                     b.HasIndex("GithubAccountId");
@@ -291,7 +288,9 @@ namespace Persistance.Migrations
                 {
                     b.HasOne("Domain.Entities.GithubAccount", "GithubAccount")
                         .WithMany("Developers")
-                        .HasForeignKey("GithubAccountId");
+                        .HasForeignKey("GithubAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("GithubAccount");
                 });
