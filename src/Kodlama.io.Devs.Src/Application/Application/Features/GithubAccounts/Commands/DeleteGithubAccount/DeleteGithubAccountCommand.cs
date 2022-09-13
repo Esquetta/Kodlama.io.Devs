@@ -27,7 +27,10 @@ namespace Application.Features.GithubAccounts.Commands.DeleteGithubAccount
             public async Task<DeletedGithubAccountDto> Handle(DeleteGithubAccountCommand request, CancellationToken cancellationToken)
             {
 
-                GithubAccount deletedAccount = await githubAccountRepository.GetAsync(x => x.Id == request.Id);
+                GithubAccount account = await githubAccountRepository.GetAsync(x => x.Id == request.Id);
+
+
+                GithubAccount githubAccount = await githubAccountRepository.DeleteAsync(account);
 
                 DeletedGithubAccountDto deletedGithubAccountDto = mapper.Map<DeletedGithubAccountDto>(deletedAccount);
 
