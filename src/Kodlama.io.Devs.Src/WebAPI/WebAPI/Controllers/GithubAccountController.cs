@@ -4,18 +4,21 @@ using Application.Features.GithubAccounts.Commands.UpdateGithubAccount;
 using Application.Features.GithubAccounts.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
-
     public class GithubAccountController : BaseController
-    {      
+    {
+       
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateGithubAccountCommand createGithubAccountCommand)
         {
+            
             CreatedGithibAccountDto createdGithibAccountDto = await Mediator.Send(createGithubAccountCommand);
 
             return Ok(createdGithibAccountDto);

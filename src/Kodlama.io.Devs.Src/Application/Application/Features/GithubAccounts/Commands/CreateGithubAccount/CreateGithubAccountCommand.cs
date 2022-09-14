@@ -18,7 +18,7 @@ namespace Application.Features.GithubAccounts.Commands.CreateGithubAccount
     public class CreateGithubAccountCommand : IRequest<CreatedGithibAccountDto>
     {
         public string AccountLink { get; set; }
-        public string Email { get; set; }
+        
 
         public class CreateGithubAccountCommandHandler : IRequestHandler<CreateGithubAccountCommand, CreatedGithibAccountDto>
         {
@@ -43,7 +43,7 @@ namespace Application.Features.GithubAccounts.Commands.CreateGithubAccount
 
                 GithubAccount mappedAccount = mapper.Map<GithubAccount>(request);
 
-                var email = request.Email;
+                var email = GetCurrentUser();
                 Developer user = await developerRepository.GetAsync(x => x.Email == email);
                 if (user == null)
                     return null;

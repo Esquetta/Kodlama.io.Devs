@@ -3,6 +3,7 @@ using Core.Security.Encryption;
 using Core.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistance;
@@ -22,9 +23,45 @@ builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddControllers();
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("AllowAnyOrigin", options => options.AllowAnyOrigin().AllowAnyHeader());
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Esquetta", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme."
+
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
+
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -43,8 +80,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 
 
+
 var app = builder.Build();
 
+
+app.UseCors(builder => builder.WithOrigins("http://localhost:55184").AllowAnyHeader());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
