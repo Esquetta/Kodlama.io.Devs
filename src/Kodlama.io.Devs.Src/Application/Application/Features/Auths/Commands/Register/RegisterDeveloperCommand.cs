@@ -27,12 +27,12 @@ namespace Application.Features.Developers.Commands.RegisterDeveloper
         {
             private readonly IDeveloperRepository developerRepository;
             private readonly IMapper mapper;
-            private readonly DeveloperBussinessRules developerBussinessRules;
+            private readonly AuthBussinessRules developerBussinessRules;
             
             private readonly IOperationClaimRepository operationClaimRepository;
             private readonly IUserOperationClaimRepository userOperationClaimRepository;
 
-            public RegisterDeveloperCommandHandler(IDeveloperRepository developerRepository, IMapper mapper, DeveloperBussinessRules developerBussinessRules,IOperationClaimRepository operationClaimRepository, IUserOperationClaimRepository userOperationClaimRepository)
+            public RegisterDeveloperCommandHandler(IDeveloperRepository developerRepository, IMapper mapper, AuthBussinessRules developerBussinessRules,IOperationClaimRepository operationClaimRepository, IUserOperationClaimRepository userOperationClaimRepository)
             {
                 this.developerRepository = developerRepository;
                 this.mapper = mapper;

@@ -25,7 +25,7 @@ namespace Application
 
             services.AddScoped<LanguageBussinessRules>();
             services.AddScoped<TechnologyBussinessRules>();
-            services.AddScoped<DeveloperBussinessRules>();
+            services.AddScoped<AuthBussinessRules>();
             services.AddScoped<GithubAccountBussinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

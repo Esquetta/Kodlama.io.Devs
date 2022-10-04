@@ -31,9 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Developers\Constants\" />
-    <Folder Include="Features\Developers\Models\" />
-    <Folder Include="Features\Developers\Queries\" />
+    <Folder Include="Features\Auths\Constants\" />
+    <Folder Include="Features\Auths\Models\" />
+    <Folder Include="Features\Auths\Queries\" />
     <Folder Include="Features\GithubAccounts\Constants\" />
     <Folder Include="Features\GithubAccounts\Models\" />
     <Folder Include="Features\GithubAccounts\Queries\" />

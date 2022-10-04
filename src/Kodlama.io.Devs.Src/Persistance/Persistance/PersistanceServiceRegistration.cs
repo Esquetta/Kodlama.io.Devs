@@ -17,6 +17,7 @@ namespace Persistance
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITechnologyRepository, TechnologyRepository>();
             services.AddScoped<IGithubAccountRepository, GithubAccountRepository>();
             services.AddScoped<IDeveloperRepository, DeveloperRepository>();
