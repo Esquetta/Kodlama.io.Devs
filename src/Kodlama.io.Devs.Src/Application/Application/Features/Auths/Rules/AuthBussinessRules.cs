@@ -12,14 +12,14 @@ namespace Application.Features.Developers.Rules
 {
     public class AuthBussinessRules
     {
-        private readonly IUserRepository userRepository;
-        public AuthBussinessRules(IUserRepository userRepository)
+        private readonly IDeveloperRepository developerRepository;
+        public AuthBussinessRules(IDeveloperRepository developerRepository)
         {
-            this.userRepository = userRepository;
+            this.developerRepository = developerRepository;
         }
         public async Task IsDeveloperExist(string email)
         {
-            User user = await userRepository.GetAsync(x=>x.Email==email);
+            Developer user = await developerRepository.GetAsync(x=>x.Email==email);
             if (user!=null)  throw new BusinessException("Email taken  try new one.");
         }
     }

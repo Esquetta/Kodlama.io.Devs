@@ -10,7 +10,7 @@ using Persistance;
 using TokenOptions = Core.Security.JWT.TokenOptions;
 
 var builder = WebApplication.CreateBuilder(args);
-var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+TokenOptions? tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 // Add services to the container.
 
 

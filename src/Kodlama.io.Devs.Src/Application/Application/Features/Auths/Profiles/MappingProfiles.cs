@@ -22,7 +22,7 @@ namespace Application.Features.Developers.Profiles
             CreateMap<Developer, UserForRegisterDto>().ReverseMap();
 
 
-            CreateMap<AccessToken, LoggedUserDto>().ReverseMap();
+           // CreateMap<AccessToken, LoggedUserDto>().ReverseMap();
 
         }
     }

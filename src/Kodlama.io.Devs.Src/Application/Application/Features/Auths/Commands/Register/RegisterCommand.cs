@@ -1,7 +1,13 @@
 ﻿using Application.Features.Auths.Dtos;
 using Application.Features.Developers.Rules;
+using Application.Services.AuthService;
 using Application.Services.Repositories;
+using AutoMapper;
 using Core.Security.Dtos;
+using Core.Security.Entities;
+using Core.Security.Hashing;
+using Core.Security.JWT;
+using Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -20,17 +26,48 @@ namespace Application.Features.Auths.Commands.Register
         public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisteredDto>
         {
             private readonly AuthBussinessRules authBussinessRules;
-            private readonly IUserRepository userRepository;
-            public RegisterCommandHandler(AuthBussinessRules authBussinessRules,IUserRepository userRepository)
+            private readonly IDeveloperRepository developerRepository;
+            private readonly IAuthService authService;
+            private readonly IMapper mapper;
+            public RegisterCommandHandler(AuthBussinessRules authBussinessRules, IDeveloperRepository developerRepository, IAuthService authService,IMapper mapper )
             {
                 this.authBussinessRules = authBussinessRules;
-                this.userRepository = userRepository;
+                this.developerRepository = developerRepository;
+                this.authService = authService;
+                this.mapper = mapper;
             }
 
             
             public async Task<RegisteredDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
             {
-                throw new NotImplementedException();
+                await authBussinessRules.IsDeveloperExist(request.UserForRegisterDto.Email);
+                byte[] passwordHash, passwordSalt;
+
+                HashingHelper.CreatePasswordHash(request.UserForRegisterDto.Password,out passwordHash,out passwordSalt);
+                Developer mappedDeveloper = mapper.Map<Developer>(request.UserForRegisterDto);
+
+                Developer addedDeveloper  = await developerRepository.AddAsync(mappedDeveloper);
+
+
+                AccessToken accessToken = await authService.CreateAccessToken(addedDeveloper);
+                RefreshToken createdRefreshToken = await authService.CreateRefreshToken(addedDeveloper, request.IpAddress);
+
+
+                RefreshToken addedRefreshToken = await authService.AddRefreshToken(createdRefreshToken);
+
+
+                RegisteredDto registeredDto = new()
+                {
+                    RefreshToken = addedRefreshToken,
+                    AccessToken = accessToken
+                };
+
+                return registeredDto;
+
+
+
+                
+
             }
         }
     }
