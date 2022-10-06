@@ -22,5 +22,10 @@ namespace Application.Features.Developers.Rules
             Developer user = await developerRepository.GetAsync(x=>x.Email==email);
             if (user!=null)  throw new BusinessException("Email taken  try new one.");
         }
+        public async Task UserCheckForLogin(string email)
+        {
+            Developer user = await developerRepository.GetAsync(x => x.Email == email);
+            if (user == null) throw new BusinessException("Invalid username or password.");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Application.Features.Auths.Commands.Register;
+﻿using Application.Features.Auths.Commands.Login;
+using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Dtos;
 using Application.Features.Developers.Commands.RegisterDeveloper;
 using Application.Features.Developers.Dtos;
@@ -13,7 +14,7 @@ namespace WebAPI.Controllers
     public class AuthController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
             RegisterCommand registerCommand = new() {
                 UserForRegisterDto = userForRegisterDto,
@@ -26,6 +27,12 @@ namespace WebAPI.Controllers
 
 
 
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginCommand loginCommand)
+        {
+            var result = await Mediator.Send(loginCommand);
+            return Ok(result);
         }
         private void SetRefreshTokenToCookie(RefreshToken refreshToken)
         {
