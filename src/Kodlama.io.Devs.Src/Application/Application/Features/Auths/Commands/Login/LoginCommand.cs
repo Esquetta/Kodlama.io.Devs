@@ -42,7 +42,7 @@ namespace Application.Features.Auths.Commands.Login
 
             public async Task<LoggedUserDto> Handle(LoginCommand request, CancellationToken cancellationToken)
             {
-                await authBussinessRules.IsDeveloperExist(request.UserForLoginDto.Email);
+                await authBussinessRules.UserCheckForLogin(request.UserForLoginDto.Email);
 
                 var developer = await developerRepository.GetAsync(x => x.Email == request.UserForLoginDto.Email);
                 
