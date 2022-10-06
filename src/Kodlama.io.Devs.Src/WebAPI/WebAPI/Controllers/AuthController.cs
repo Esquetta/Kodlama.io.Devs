@@ -1,6 +1,5 @@
 ﻿using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Dtos;
-using Application.Features.Developers.Commands.LoginDeveloper;
 using Application.Features.Developers.Commands.RegisterDeveloper;
 using Application.Features.Developers.Dtos;
 using Core.Security.Dtos;
