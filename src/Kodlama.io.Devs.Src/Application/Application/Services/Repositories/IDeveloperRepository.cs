@@ -11,6 +11,6 @@ namespace Application.Services.Repositories
 {
     public interface IDeveloperRepository:IRepository<Developer>,IAsyncRepository<Developer>
     {
-        List<OperationClaim> GetOperationClaims(User user);
+        
     }
 }
