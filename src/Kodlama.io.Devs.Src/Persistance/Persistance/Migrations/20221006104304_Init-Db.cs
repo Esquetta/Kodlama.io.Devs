@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistance.Migrations
 {
-    public partial class Init : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,8 +71,7 @@ namespace Persistance.Migrations
                         name: "FK_User_GithubAccounts_GithubAccountId",
                         column: x => x.GithubAccountId,
                         principalTable: "GithubAccounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +95,7 @@ namespace Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RefreshToken",
+                name: "RefreshTokens",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -113,9 +112,9 @@ namespace Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RefreshToken", x => x.Id);
+                    table.PrimaryKey("PK_RefreshTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshToken_User_UserId",
+                        name: "FK_RefreshTokens_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
@@ -148,9 +147,39 @@ namespace Persistance.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Languages",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "C#" });
+
+            migrationBuilder.InsertData(
+                table: "Languages",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Java" });
+
+            migrationBuilder.InsertData(
+                table: "Languages",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Python" });
+
+            migrationBuilder.InsertData(
+                table: "Tech",
+                columns: new[] { "Id", "LanguageId", "Name" },
+                values: new object[] { 1, 1, "WPF" });
+
+            migrationBuilder.InsertData(
+                table: "Tech",
+                columns: new[] { "Id", "LanguageId", "Name" },
+                values: new object[] { 2, 1, "ASP.NET" });
+
+            migrationBuilder.InsertData(
+                table: "Tech",
+                columns: new[] { "Id", "LanguageId", "Name" },
+                values: new object[] { 3, 2, "Spring" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_RefreshToken_UserId",
-                table: "RefreshToken",
+                name: "IX_RefreshTokens_UserId",
+                table: "RefreshTokens",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -177,7 +206,7 @@ namespace Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RefreshToken");
+                name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "Tech");

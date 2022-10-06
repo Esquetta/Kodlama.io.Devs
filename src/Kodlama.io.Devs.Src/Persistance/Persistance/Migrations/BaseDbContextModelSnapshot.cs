@@ -183,6 +183,23 @@ namespace Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "C#"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Java"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Python"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Technology", b =>

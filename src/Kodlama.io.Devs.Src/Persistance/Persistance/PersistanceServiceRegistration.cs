@@ -23,7 +23,8 @@ namespace Persistance
             services.AddScoped<IDeveloperRepository, DeveloperRepository>();
             services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
-            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("RentACarCampConnectionString")));
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ProgramingLanguagesConStr")));
 
             return services;
         }

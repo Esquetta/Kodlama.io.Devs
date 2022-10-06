@@ -12,14 +12,14 @@ using Persistance.Contexts;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220913121919_Add-Techs")]
-    partial class AddTechs
+    [Migration("20221006104304_Init-Db")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -82,7 +82,7 @@ namespace Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshToken");
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Core.Security.Entities.User", b =>
@@ -185,6 +185,23 @@ namespace Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "C#"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Java"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Python"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Technology", b =>
@@ -214,19 +231,19 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            LanguageId = 2,
+                            LanguageId = 1,
                             Name = "WPF"
                         },
                         new
                         {
                             Id = 2,
-                            LanguageId = 2,
+                            LanguageId = 1,
                             Name = "ASP.NET"
                         },
                         new
                         {
                             Id = 3,
-                            LanguageId = 3,
+                            LanguageId = 2,
                             Name = "Spring"
                         });
                 });
@@ -235,7 +252,7 @@ namespace Persistance.Migrations
                 {
                     b.HasBaseType("Core.Security.Entities.User");
 
-                    b.Property<int>("GithubAccountId")
+                    b.Property<int?>("GithubAccountId")
                         .HasColumnType("int");
 
                     b.HasIndex("GithubAccountId");
@@ -288,9 +305,7 @@ namespace Persistance.Migrations
                 {
                     b.HasOne("Domain.Entities.GithubAccount", "GithubAccount")
                         .WithMany("Developers")
-                        .HasForeignKey("GithubAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GithubAccountId");
 
                     b.Navigation("GithubAccount");
                 });

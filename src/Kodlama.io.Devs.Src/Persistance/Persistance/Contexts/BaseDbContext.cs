@@ -33,7 +33,7 @@ namespace Persistance.Contexts
         {
             //if (!optionsBuilder.IsConfigured)
             //    base.OnConfiguring(
-            //        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SomeConnectionString")));
+            //        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("ProgramingLanguagesConStr")));
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,6 +46,13 @@ namespace Persistance.Contexts
 
                 x.HasOne(x => x.Language);
             });
+
+            
+
+            
+            Language[] languages = { new(1, "C#"), new(2, "Java"), new(3, "Python") };
+
+            modelBuilder.Entity<Language>().HasData(languages);
 
             Technology[] technologies = { new(1, "WPF", 1), new(2, "ASP.NET", 1), new(3, "Spring", 2) };
             modelBuilder.Entity<Technology>().HasData(technologies);
