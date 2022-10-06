@@ -29,9 +29,9 @@ namespace Application.Features.Auths.Commands.Login
             private readonly IDeveloperRepository developerRepository;
             private readonly IMapper mapper;
             private readonly ITokenHelper tokenHelper;
-            private readonly AuthBussinessRules authBussinessRules;
+            private readonly AuthBusinessRules authBussinessRules;
             private readonly IAuthService authService;
-            public LoginCommandHandler(IDeveloperRepository developerRepository, IMapper mapper,ITokenHelper tokenHelper,AuthBussinessRules authBussinessRules,IAuthService authService)
+            public LoginCommandHandler(IDeveloperRepository developerRepository, IMapper mapper,ITokenHelper tokenHelper,AuthBusinessRules authBussinessRules,IAuthService authService)
             {
                 this.authService = authService;
                 this.developerRepository = developerRepository;

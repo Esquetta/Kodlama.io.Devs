@@ -22,8 +22,8 @@ namespace Application.Features.Languages.Commands.UpdateBrand
         {
             private readonly ILanguageRepository languageRepository;
             private readonly IMapper mapper;
-            private readonly LanguageBussinessRules languageBussinessRules;
-            public UpdateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBussinessRules languageBussinessRules)
+            private readonly LanguageBusinessRules languageBussinessRules;
+            public UpdateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBusinessRules languageBussinessRules)
             {
                 this.languageRepository = languageRepository;
                 this.mapper = mapper;

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Languages.Rules
 {
-    public class LanguageBussinessRules
+    public class LanguageBusinessRules
     {
         private readonly ILanguageRepository languageRepository;
-        public LanguageBussinessRules(ILanguageRepository languageRepository)
+        public LanguageBusinessRules(ILanguageRepository languageRepository)
         {
             this.languageRepository = languageRepository;
         }

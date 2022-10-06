@@ -20,8 +20,8 @@ namespace Application.Features.Languages.Commands.CreateLanguage
         {
             private readonly ILanguageRepository languageRepository;
             private readonly IMapper mapper;
-            private readonly LanguageBussinessRules languageBussinessRules;
-            public CreateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBussinessRules languageBussinessRules)
+            private readonly LanguageBusinessRules languageBussinessRules;
+            public CreateLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBusinessRules languageBussinessRules)
             {
                 this.languageRepository = languageRepository;
                 this.mapper = mapper;

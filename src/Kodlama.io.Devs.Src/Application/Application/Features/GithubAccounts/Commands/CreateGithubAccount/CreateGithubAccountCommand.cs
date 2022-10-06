@@ -24,10 +24,10 @@ namespace Application.Features.GithubAccounts.Commands.CreateGithubAccount
         {
             private readonly IGithubAccountRepository githubAccountRepository;
             private readonly IMapper mapper;
-            private readonly GithubAccountBussinessRules githubAccountBussinessRules;
+            private readonly GithubAccountBusinessRules githubAccountBussinessRules;
             private readonly IHttpContextAccessor httpContextAccessor;
             private readonly IDeveloperRepository developerRepository;
-            public CreateGithubAccountCommandHandler(IGithubAccountRepository githubAccountRepository, IMapper mapper, GithubAccountBussinessRules githubAccountBussinessRules, IHttpContextAccessor httpContextAccessor, IDeveloperRepository developerRepository)
+            public CreateGithubAccountCommandHandler(IGithubAccountRepository githubAccountRepository, IMapper mapper, GithubAccountBusinessRules githubAccountBussinessRules, IHttpContextAccessor httpContextAccessor, IDeveloperRepository developerRepository)
             {
                 this.githubAccountRepository = githubAccountRepository;
                 this.mapper = mapper;

@@ -25,11 +25,11 @@ namespace Application.Features.Auths.Commands.Register
 
         public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisteredDto>
         {
-            private readonly AuthBussinessRules authBussinessRules;
+            private readonly AuthBusinessRules authBussinessRules;
             private readonly IDeveloperRepository developerRepository;
             private readonly IAuthService authService;
             private readonly IMapper mapper;
-            public RegisterCommandHandler(AuthBussinessRules authBussinessRules, IDeveloperRepository developerRepository, IAuthService authService,IMapper mapper )
+            public RegisterCommandHandler(AuthBusinessRules authBussinessRules, IDeveloperRepository developerRepository, IAuthService authService,IMapper mapper )
             {
                 this.authBussinessRules = authBussinessRules;
                 this.developerRepository = developerRepository;

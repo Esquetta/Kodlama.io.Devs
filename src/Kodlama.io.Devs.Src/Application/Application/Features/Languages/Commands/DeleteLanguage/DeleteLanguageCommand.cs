@@ -19,8 +19,8 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
         {
             private readonly ILanguageRepository languageRepository;
             private readonly IMapper mapper;
-            private readonly LanguageBussinessRules languageBussinessRules;
-            public DeleteLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBussinessRules languageBussinessRules)
+            private readonly LanguageBusinessRules languageBussinessRules;
+            public DeleteLanguageCommandHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBusinessRules languageBussinessRules)
             {
                 this.languageRepository = languageRepository;
                 this.mapper = mapper;

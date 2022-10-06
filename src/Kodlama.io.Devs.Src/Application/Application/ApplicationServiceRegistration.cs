@@ -1,6 +1,7 @@
 ﻿using Application.Features.Developers.Rules;
 using Application.Features.GithubAccounts.Rules;
 using Application.Features.Languages.Rules;
+using Application.Features.OperationClaims.Rules;
 using Application.Features.Technologies.Rules;
 using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
@@ -24,10 +25,11 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<LanguageBussinessRules>();
-            services.AddScoped<TechnologyBussinessRules>();
-            services.AddScoped<AuthBussinessRules>();
-            services.AddScoped<GithubAccountBussinessRules>();
+            services.AddScoped<LanguageBusinessRules>();
+            services.AddScoped<TechnologyBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<OperationClaimBusinesRules>();
+            services.AddScoped<GithubAccountBusinessRules>();
 
             services.AddScoped<IAuthService, AuthManager>();
 

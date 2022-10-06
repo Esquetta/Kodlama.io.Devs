@@ -21,9 +21,9 @@ namespace Application.Features.Languages.Queries.GetByIdLanguageQuery
         {
             private readonly ILanguageRepository languageRepository;
             private readonly IMapper mapper;
-            private readonly LanguageBussinessRules languageBussinessRules;
+            private readonly LanguageBusinessRules languageBussinessRules;
 
-            public GetByIdLanguageQueryHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBussinessRules languageBussinessRules)
+            public GetByIdLanguageQueryHandler(ILanguageRepository languageRepository, IMapper mapper, LanguageBusinessRules languageBussinessRules)
             {
                 this.languageRepository = languageRepository;
                 this.mapper = mapper;

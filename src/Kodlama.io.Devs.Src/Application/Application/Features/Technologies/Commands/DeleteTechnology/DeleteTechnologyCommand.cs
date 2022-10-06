@@ -21,8 +21,8 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
         {
             private readonly ITechnologyRepository technologyRepository;
             private readonly IMapper mapper;
-            private readonly TechnologyBussinessRules technologyBussinessRules;
-            public DeleteTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBussinessRules technologyBussinessRules)
+            private readonly TechnologyBusinessRules technologyBussinessRules;
+            public DeleteTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBusinessRules technologyBussinessRules)
             {
                 this.technologyRepository = technologyRepository;
                 this.mapper = mapper;

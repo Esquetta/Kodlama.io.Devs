@@ -21,8 +21,8 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
         {
             private readonly ITechnologyRepository technologyRepository;
             private readonly IMapper mapper;
-            private readonly TechnologyBussinessRules technologyBussinessRules;
-            public CreateTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBussinessRules technologyBussinessRules)
+            private readonly TechnologyBusinessRules technologyBussinessRules;
+            public CreateTechnologyCommandHandler(ITechnologyRepository technologyRepository, IMapper mapper, TechnologyBusinessRules technologyBussinessRules)
             {
                 this.technologyRepository = technologyRepository;
                 this.mapper = mapper;

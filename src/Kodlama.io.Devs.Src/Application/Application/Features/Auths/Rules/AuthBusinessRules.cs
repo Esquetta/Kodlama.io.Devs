@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Developers.Rules
 {
-    public class AuthBussinessRules
+    public class AuthBusinessRules
     {
         private readonly IDeveloperRepository developerRepository;
-        public AuthBussinessRules(IDeveloperRepository developerRepository)
+        public AuthBusinessRules(IDeveloperRepository developerRepository)
         {
             this.developerRepository = developerRepository;
         }

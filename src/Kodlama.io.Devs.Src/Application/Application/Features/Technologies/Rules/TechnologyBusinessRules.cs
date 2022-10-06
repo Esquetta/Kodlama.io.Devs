@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Technologies.Rules
 {
-    public class TechnologyBussinessRules
+    public class TechnologyBusinessRules
     {
         private readonly ITechnologyRepository technologyRepository;
-        public TechnologyBussinessRules(ITechnologyRepository technologyRepository)
+        public TechnologyBusinessRules(ITechnologyRepository technologyRepository)
         {
             this.technologyRepository = technologyRepository;
         }

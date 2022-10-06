@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.GithubAccounts.Rules
 {
-    public class GithubAccountBussinessRules
+    public class GithubAccountBusinessRules
     {
         private readonly IGithubAccountRepository githubAccountRepository;
-        public GithubAccountBussinessRules(IGithubAccountRepository githubAccountRepository)
+        public GithubAccountBusinessRules(IGithubAccountRepository githubAccountRepository)
         {
             this.githubAccountRepository = githubAccountRepository;
         }
