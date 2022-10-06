@@ -22,6 +22,13 @@ namespace Application.Features.OperationClaims.Commands.CreateOperationClaim
             private readonly IMapper mapper;
             private readonly OperationClaimBusinesRules operationClaimBusinesRules;
 
+
+            public CreateOperationClaimCommandHandler(IOperationClaimRepository operationClaimRepository,IMapper mapper,OperationClaimBusinesRules operationClaimBusinesRules)
+            {
+                this.mapper = mapper;
+                this.operationClaimBusinesRules = operationClaimBusinesRules;
+                this.operationClaimRepository = operationClaimRepository;
+            }
             public async Task<CreatedOperationClaimDto> Handle(CreateOperationClaimCommand request, CancellationToken cancellationToken)
             {
                 await operationClaimBusinesRules.OperationCannotBeDuplicatedWhenInserted(request.Name);
