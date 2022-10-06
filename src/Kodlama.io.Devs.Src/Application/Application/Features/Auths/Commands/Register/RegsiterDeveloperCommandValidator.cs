@@ -12,12 +12,10 @@ namespace Application.Features.Developers.Commands.RegisterDeveloper
     {
         public RegsiterDeveloperCommandValidator()
         {
-            RuleFor(x => x.UserForRegisterDto.Email).NotEmpty();
+            RuleFor(x => x.UserForRegisterDto.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.UserForRegisterDto.FirstName).NotEmpty();
             RuleFor(x => x.UserForRegisterDto.LastName).NotEmpty();
-            RuleFor(x => x.UserForRegisterDto.Password).NotEmpty();
-            RuleFor(x => x.UserForRegisterDto.Password).MinimumLength(6);
-            RuleFor(x => x.UserForRegisterDto.Password).MaximumLength(20);
+            RuleFor(x => x.UserForRegisterDto.Password).NotEmpty().MinimumLength(6).MaximumLength(20);
         }
     }
 }

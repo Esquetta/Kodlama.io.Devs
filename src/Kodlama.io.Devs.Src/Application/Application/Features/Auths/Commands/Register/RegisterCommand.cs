@@ -45,6 +45,8 @@ namespace Application.Features.Auths.Commands.Register
 
                 HashingHelper.CreatePasswordHash(request.UserForRegisterDto.Password,out passwordHash,out passwordSalt);
                 Developer mappedDeveloper = mapper.Map<Developer>(request.UserForRegisterDto);
+                mappedDeveloper.PasswordHash = passwordHash;
+                mappedDeveloper.PasswordSalt = passwordSalt;
 
                 Developer addedDeveloper  = await developerRepository.AddAsync(mappedDeveloper);
 
