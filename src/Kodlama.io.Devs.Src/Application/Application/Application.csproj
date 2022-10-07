@@ -38,8 +38,15 @@
     <Folder Include="Features\GithubAccounts\Models\" />
     <Folder Include="Features\GithubAccounts\Queries\" />
     <Folder Include="Features\Languages\Constant\" />
-    <Folder Include="Features\OperationClaims\Constants\" />
+    <Folder Include="Features\OperationClaim\Constants\" />
     <Folder Include="Features\Technologies\Constants\" />
+    <Folder Include="Features\UserOperationClaim\Commands\" />
+    <Folder Include="Features\UserOperationClaim\Constants\" />
+    <Folder Include="Features\UserOperationClaim\Dtos\" />
+    <Folder Include="Features\UserOperationClaim\Models\" />
+    <Folder Include="Features\UserOperationClaim\Rules\" />
+    <Folder Include="Features\UserOperationClaim\Queries\" />
+    <Folder Include="Features\UserOperationClaim\Profiles\" />
   </ItemGroup>
 
 </Project>
