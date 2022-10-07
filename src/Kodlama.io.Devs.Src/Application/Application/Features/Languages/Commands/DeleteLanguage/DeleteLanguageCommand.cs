@@ -14,7 +14,7 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
 {
     public class DeleteLanguageCommand : IRequest<DeletedLanguageDto>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
         public class DeleteLanguageCommandHandler : IRequestHandler<DeleteLanguageCommand, DeletedLanguageDto>
         {
             private readonly ILanguageRepository languageRepository;
@@ -29,7 +29,7 @@ namespace Application.Features.Languages.Commands.DeleteLanguage
 
             public async Task<DeletedLanguageDto> Handle(DeleteLanguageCommand request, CancellationToken cancellationToken)
             {
-                Language checkedLanguage = await languageBussinessRules.IsLanguageNameExist(request.Name);
+                Language checkedLanguage = await languageRepository.GetAsync(x=>x.Id==request.Id);
 
                 Language deletedLanguage = await languageRepository.DeleteAsync(checkedLanguage);
 
