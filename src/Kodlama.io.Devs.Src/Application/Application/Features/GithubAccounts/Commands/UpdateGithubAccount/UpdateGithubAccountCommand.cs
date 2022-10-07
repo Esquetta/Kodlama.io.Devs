@@ -14,6 +14,7 @@ namespace Application.Features.GithubAccounts.Commands.UpdateGithubAccount
     public class UpdateGithubAccountCommand : IRequest<UpdatedGithubAccountDto>
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public class UpdateGithubAccountCommandHamdler : IRequestHandler<UpdateGithubAccountCommand, UpdatedGithubAccountDto>
         {
             private readonly IGithubAccountRepository githubAccountRepository;
