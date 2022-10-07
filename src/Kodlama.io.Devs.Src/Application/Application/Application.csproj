@@ -39,8 +39,6 @@
     <Folder Include="Features\GithubAccounts\Queries\" />
     <Folder Include="Features\Languages\Constant\" />
     <Folder Include="Features\OperationClaims\Constants\" />
-    <Folder Include="Features\OperationClaims\Models\" />
-    <Folder Include="Features\OperationClaims\Queries\" />
     <Folder Include="Features\Technologies\Constants\" />
   </ItemGroup>
 
