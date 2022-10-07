@@ -3,6 +3,7 @@ using Application.Features.GithubAccounts.Rules;
 using Application.Features.Languages.Rules;
 using Application.Features.OperationClaims.Rules;
 using Application.Features.Technologies.Rules;
+using Application.Features.UserOperationClaims.Rules;
 using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
@@ -30,7 +31,7 @@ namespace Application
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<OperationClaimBusinesRules>();
             services.AddScoped<GithubAccountBusinessRules>();
-
+            services.AddScoped<UserOperationClaimBusinessRules>();
             services.AddScoped<IAuthService, AuthManager>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

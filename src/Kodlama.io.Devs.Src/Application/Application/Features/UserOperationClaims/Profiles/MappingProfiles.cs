@@ -1,4 +1,5 @@
 ﻿using Application.Features.UserOperationClaims.Commands.CreateUserOperationClaim;
+using Application.Features.UserOperationClaims.Dtos;
 using AutoMapper;
 using Core.Security.Entities;
 using System;
@@ -14,6 +15,7 @@ namespace Application.Features.UserOperationClaims.Profiles
         public MappingProfiles()
         {
             CreateMap<CreateUserOperationClaimCommand, UserOperationClaim>().ReverseMap();
+            CreateMap<CreatedUserOperationClaimDto,UserOperationClaim>().ReverseMap();  
         }
     }
 }
