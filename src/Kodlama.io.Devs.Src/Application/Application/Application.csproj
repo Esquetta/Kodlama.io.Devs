@@ -38,7 +38,6 @@
     <Folder Include="Features\GithubAccounts\Models\" />
     <Folder Include="Features\GithubAccounts\Queries\" />
     <Folder Include="Features\Languages\Constant\" />
-    <Folder Include="Features\OperationClaims\Commands\DeleteOperationClaim\" />
     <Folder Include="Features\OperationClaims\Commands\UpdateOperationClaim\" />
     <Folder Include="Features\OperationClaims\Constants\" />
     <Folder Include="Features\OperationClaims\Models\" />
