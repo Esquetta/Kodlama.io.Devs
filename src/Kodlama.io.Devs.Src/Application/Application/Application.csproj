@@ -40,7 +40,7 @@
     <Folder Include="Features\Languages\Constant\" />
     <Folder Include="Features\OperationClaim\Constants\" />
     <Folder Include="Features\Technologies\Constants\" />
-    <Folder Include="Features\UserOperationClaim\Commands\" />
+    <Folder Include="Features\UserOperationClaim\Commands\Create\" />
     <Folder Include="Features\UserOperationClaim\Constants\" />
     <Folder Include="Features\UserOperationClaim\Dtos\" />
     <Folder Include="Features\UserOperationClaim\Models\" />
