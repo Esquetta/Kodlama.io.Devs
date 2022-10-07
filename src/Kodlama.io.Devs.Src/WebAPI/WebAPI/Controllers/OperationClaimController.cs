@@ -2,6 +2,9 @@
 using Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Application.Features.OperationClaims.Dtos;
+using Application.Features.OperationClaims.Models;
+using Application.Features.OperationClaims.Queries.GetListOperationClaim;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +31,14 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateOperationClaimCommand updateOperationClaimCommand)
         {
             UpdatedOperationClaimDto result = await Mediator.Send(updateOperationClaimCommand);
+
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        {
+            GetListOperationClaimQuery getListOperationClaimQuery = new() { PageRequest = pageRequest };
+            OperationClaimListViewModel result = await Mediator.Send(getListOperationClaimQuery);
 
             return Ok(result);
         }
