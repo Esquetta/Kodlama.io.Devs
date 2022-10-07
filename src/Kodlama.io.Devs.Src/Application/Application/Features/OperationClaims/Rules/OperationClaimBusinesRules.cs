@@ -23,5 +23,11 @@ namespace Application.Features.OperationClaims.Rules
             if (operationClaim != null) throw new BusinessException("Operation name exist.");
 
         }
+        public async Task OperationCannotBeDuplicatedWhenUpdated(string name)
+        {
+            OperationClaim operationClaim = await operationClaimRepository.GetAsync(x => x.Name == name);
+            if (operationClaim != null) throw new BusinessException("Operation name exist.");
+
+        }
     }
 }
