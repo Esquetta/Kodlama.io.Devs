@@ -2,7 +2,10 @@
 using Application.Features.UserOperationClaims.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Persistence.Paging;
+using Core.Security.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +32,13 @@ namespace Application.Features.UserOperationClaims.Queries.GetListUserOperationC
 
             public async Task<UserOperationClaimListViewModel> Handle(GetListUserOperationClaimByUserIdQuery request, CancellationToken cancellationToken)
             {
-                throw new NotImplementedException();
+                await userOperationClaimBusinessRules.IsUserExist(request.UserId);
+
+                IPaginate<UserOperationClaim> paginate = await userOperationClaimRepository.GetListAsync(include:x=>x.Include(x=>x.User).Include(x=>x.OperationClaim),predicate:x=>x.UserId==request.UserId);
+
+                UserOperationClaimListViewModel userOperationClaimListViewModel = mapper.Map<UserOperationClaimListViewModel>(paginate);
+
+                return userOperationClaimListViewModel;
             }
         }
     }

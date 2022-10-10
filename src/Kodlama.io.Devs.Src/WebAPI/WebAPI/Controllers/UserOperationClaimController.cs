@@ -1,6 +1,8 @@
 ﻿using Application.Features.UserOperationClaims.Commands.CreateUserOperationClaim;
 using Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaim;
 using Application.Features.UserOperationClaims.Dtos;
+using Application.Features.UserOperationClaims.Models;
+using Application.Features.UserOperationClaims.Queries.GetListUserOperationClaimByUserId;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +24,12 @@ namespace WebAPI.Controllers
         {
             DeletedUserOperationClaimDto result = await Mediator.Send(deleteUserOperationClaimCommand);
 
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetUserOperationcClaims([FromQuery]GetListUserOperationClaimByUserIdQuery getListUserOperationClaimByUserIdQuery)
+        {
+            UserOperationClaimListViewModel result = await Mediator.Send(getListUserOperationClaimByUserIdQuery);
             return Ok(result);
         }
     }

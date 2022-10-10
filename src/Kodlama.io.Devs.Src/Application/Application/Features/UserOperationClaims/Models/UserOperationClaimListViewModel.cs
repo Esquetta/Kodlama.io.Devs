@@ -11,6 +11,7 @@ namespace Application.Features.UserOperationClaims.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UserOperationsClaimsListDto[] Items { get; set; }
+        public string Email { get; set; }
+        public UserOperationsClaimsListDto[] Claims { get; set; }
     }
 }
