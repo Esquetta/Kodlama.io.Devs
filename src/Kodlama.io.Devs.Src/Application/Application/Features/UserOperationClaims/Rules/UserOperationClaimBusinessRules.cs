@@ -15,11 +15,12 @@ namespace Application.Features.UserOperationClaims.Rules
         
         private readonly IOperationClaimRepository operationClaimRepository;
         private readonly IDeveloperRepository developerRepository;
-        public UserOperationClaimBusinessRules(IDeveloperRepository developerRepository,IOperationClaimRepository operationClaimRepository)
+        private readonly IUserOperationClaimRepository userOperationClaimRepository;
+        public UserOperationClaimBusinessRules(IDeveloperRepository developerRepository,IOperationClaimRepository operationClaimRepository, IUserOperationClaimRepository userOperationClaimRepository)
         {
             this.developerRepository = developerRepository;
             this.operationClaimRepository = operationClaimRepository;
-            
+            this.userOperationClaimRepository = userOperationClaimRepository;
         }
 
         public async Task IsOperationExist(int operationId)
@@ -33,6 +34,12 @@ namespace Application.Features.UserOperationClaims.Rules
             if (result == null) throw new BusinessException("User not found");
         }
 
-       
+        public async Task UserOperationClaimCannotBeDublicatedWhenInserted(int userId,int operationId)
+        {
+            UserOperationClaim result = await userOperationClaimRepository.GetAsync(x=>x.OperationClaimId==operationId && x.UserId==userId);
+            if (result != null) throw new BusinessException("Values already in database.");
+        }
+
+
     }
 }

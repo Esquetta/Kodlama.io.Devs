@@ -35,7 +35,7 @@ namespace Application.Features.UserOperationClaims.Commands.CreateUserOperationC
             {
                 await userOperationClaimBusinessRules.IsOperationExist(request.OperationClaimId);
                 await userOperationClaimBusinessRules.IsUserExist(request.UserId);
-
+                await userOperationClaimBusinessRules.UserOperationClaimCannotBeDublicatedWhenInserted(request.UserId, request.OperationClaimId);
 
                 UserOperationClaim userOperationClaim = mapper.Map<UserOperationClaim>(request);
 
