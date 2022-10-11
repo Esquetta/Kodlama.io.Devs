@@ -3,6 +3,7 @@ using Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaim
 using Application.Features.UserOperationClaims.Dtos;
 using Application.Features.UserOperationClaims.Models;
 using Application.Features.UserOperationClaims.Queries.GetListUserOperationClaimByUserId;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
     public class UserOperationClaimController : BaseController
     {
         [HttpPost]
